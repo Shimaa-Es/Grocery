@@ -1,4 +1,4 @@
-![grocery_mockup](https://github.com/ahmod001/grocery/assets/121039395/f8ff25cb-4710-49f3-9ce8-712ec325200e)
+![grocery_mockup](https://github.com/Shimaa-Es/Grocery/blob/main/src/assets/grocery_mockup.png)
 
 # Grocery -Landing page application
 
