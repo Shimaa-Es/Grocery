@@ -51,8 +51,7 @@ function ScrollTop(props) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: "fixed", bottom: 20, right: 16 }}
-      >
+        sx={{ position: "fixed", bottom: 20, right: 16 }}>
         {children}
       </Box>
     </Fade>
@@ -105,8 +104,7 @@ const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
           <ListItem sx={{ minWidth: "12rem" }} disablePadding>
             <ListItemButton
               onClick={() => setIsOpenDrawer(!isOpenDrawer)}
-              sx={{ ":hover": { bgcolor: "#E0F3D7" } }}
-            >
+              sx={{ ":hover": { bgcolor: "#E0F3D7" } }}>
               <ListItemText
                 sx={{ marginLeft: "0.4rem" }}
                 primary={link.linkName}
@@ -122,20 +120,17 @@ const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
           smooth={true}
           spy={true}
           offset={-70}
-          duration={80}
-        >
+          duration={80}>
           <ListItem
             disabled={
               link.id !== "footer" && pathname !== "/" && pathname !== "/home"
             }
             key={i}
             sx={{ minWidth: "12rem" }}
-            disablePadding
-          >
+            disablePadding>
             <ListItemButton
               onClick={() => setIsOpenDrawer(!isOpenDrawer)}
-              sx={{ ":hover": { bgcolor: "#E0F3D7" } }}
-            >
+              sx={{ ":hover": { bgcolor: "#E0F3D7" } }}>
               <ListItemText
                 sx={{ marginLeft: "0.4rem" }}
                 primary={link.linkName}
@@ -161,16 +156,14 @@ const Links = ({ drawer, setIsOpenDrawer, isOpenDrawer }) => {
             link.id !== "footer" && pathname !== "/" && pathname !== "/home"
               ? "hidden"
               : "block"
-          } hover:text-gray-800 transition-all duration-500 hover:scale-[0.99] text-sm cursor-pointer`}
-        >
+          } hover:text-gray-800 transition-all duration-500 hover:scale-[0.99] text-sm cursor-pointer`}>
           <ScrollToLink
             to={link.id}
             activeClass="active"
             smooth={true}
             spy={true}
             offset={-70}
-            duration={500}
-          >
+            duration={500}>
             {link.linkName}
           </ScrollToLink>
         </li>
@@ -224,13 +217,11 @@ const Navbar = (props) => {
             sx={{
               bgcolor: isNavBarElevated ? "white" : "transparent",
               transition: "all 150ms ease-in-out",
-            }}
-          >
+            }}>
             <Toolbar>
               <Container
                 disableGutters={isLargeScreen}
-                sx={{ display: "flex", px: isLargeScreen ? 0.5 : 0 }}
-              >
+                sx={{ display: "flex", px: isLargeScreen ? 0.5 : 0 }}>
                 {/* Open Drawer Btn */}
                 {isSemiMediumScreen && (
                   <IconButton
@@ -238,8 +229,7 @@ const Navbar = (props) => {
                     aria-label="open drawer"
                     onClick={() => setIsOpenDrawer(!isOpenDrawer)}
                     edge="start"
-                    sx={{ mr: 1 }}
-                  >
+                    sx={{ mr: 1 }}>
                     <MenuIcon fontSize="inherit" />
                   </IconButton>
                 )}
@@ -260,8 +250,7 @@ const Navbar = (props) => {
                       <Drawer
                         anchor={"left"}
                         open={isOpenDrawer}
-                        onClose={() => setIsOpenDrawer(!isOpenDrawer)}
-                      >
+                        onClose={() => setIsOpenDrawer(!isOpenDrawer)}>
                         <Links
                           setIsOpenDrawer={setIsOpenDrawer}
                           isOpenDrawer={isOpenDrawer}
@@ -282,8 +271,7 @@ const Navbar = (props) => {
                             onClick={() => navigate("/cart")}
                             // disabled
                             sx={{ textTransform: "capitalize" }}
-                            color="warning"
-                          >
+                            color="warning">
                             <ShoppingCartRounded fontSize="inherit" />
                           </IconButton>
                         </span>
@@ -297,8 +285,7 @@ const Navbar = (props) => {
                             size={isExtraSmallScreen ? "small" : "medium"}
                             sx={{ textTransform: "capitalize" }}
                             color="success"
-                            variant="contained"
-                          >
+                            variant="contained">
                             Log in
                           </Button>
                         ) : (
@@ -308,8 +295,7 @@ const Navbar = (props) => {
                             onClick={handleLogOut}
                             sx={{ textTransform: "capitalize" }}
                             color="success"
-                            variant="contained"
-                          >
+                            variant="contained">
                             Log out
                           </Button>
                         )

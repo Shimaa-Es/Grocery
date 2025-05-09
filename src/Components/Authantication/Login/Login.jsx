@@ -11,19 +11,16 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import animation from "../../../assets/animations/loginAnimation.gif";
 import { groceryContext } from "../../Layout/Layout";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { handleSessionStorage } from "../../../utils/utils";
+import Register from "../Register/Register";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "user@gmail.com",
-      password: "User1234",
-    },
-  });
+  } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [logInError, setLogInError] = useState("");
 
@@ -35,25 +32,18 @@ const Login = () => {
   const { from } = location.state || { from: { pathname: "/" } };
 
   const { userLoggedInState } = useContext(groceryContext);
-  const [isUserLoggedIn, setIsUserLoggedIn] = userLoggedInState;
-
-  if (isUserLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
-
   // Login handler
   const onSubmit = (data) => {
-    // Simulated user database
-    const users = JSON.parse(localStorage.getItem("grocery_users")) || [];
+    const defaultUser = {
+      email: "user@gmail.com",
+      password: "User1234",
+    };
+    const [isUserLoggedIn, setIsUserLoggedIn] = userLoggedInState;
 
-    // Check if user exists
-    const user = users.find(
-      (u) => u.email === data.email && u.password === data.password
-    );
-
-    if (!user) {
-      setLogInError("User not found. Please register.");
-      navigate("/register");
+    if (defaultUser.email !== data.email) {
+      setLogInError("Invalid email");
+    } else if (defaultUser.password !== data.password) {
+      setLogInError("Invalid password");
     } else {
       setLogInError("");
       sessionStorage.setItem("grocery_userLoggedIn", JSON.stringify(true));
@@ -97,6 +87,7 @@ const Login = () => {
                           message: "Invalid email address",
                         },
                       })}
+                      defaultValue={"user@gmail.com"}
                       label="Email"
                       size="small"
                       error={errors.email ? true : false}
@@ -108,6 +99,7 @@ const Login = () => {
 
                     {/* Password */}
                     <TextField
+                      defaultValue={"User1234"}
                       {...register("password", {
                         required: "Password is required",
                         pattern: {
@@ -144,12 +136,7 @@ const Login = () => {
                     />
 
                     {/* Display the alert only if there is a login error */}
-                    {logInError && (
-                      <p className="text-red-600 text-sm font-medium">
-                        {logInError}
-                      </p>
-                    )}
-
+                    {logInError && <></>}
                     {/* Submit-btn */}
                     <Button
                       sx={{ textTransform: "capitalize" }}

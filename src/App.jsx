@@ -9,6 +9,7 @@ import Login from "./Components/Authantication/Login/Login";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import Cart from "./Components/Cart/Cart";
 import Registration from "./Components/Authantication/Register/Register";
+import Register from "./Components/Authantication/Register/Register";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             element={<Products categoryProducts={true} />}
           />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
+          <Route path="/register" element={<Register />} />
           {/* Protected Route */}
           <Route element={<ProtectedRoute />}>
             <Route path="/cart" element={<Cart />} />
